@@ -1,0 +1,24 @@
+{
+  "name": "superagent-demo",
+  "version": "0.0.1",
+  "description": "Simple express + superagent + handlebars project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "superagent",
+    "consolidate",
+    "handlebars"
+  ],
+  "author": "timBrockman",
+  "license": "ISC",
+  "dependencies": {
+    "consolidate": "^0.12.1",
+    "express": "^4.12.3",
+    "handlebars": "^3.0.1",
+    "superagent": "^1.1.0"
+  }
+}
