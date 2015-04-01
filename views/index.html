@@ -2,10 +2,19 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title>{{title}}</title>
+  <title>total results: {{pageInfo.totalResults}}</title>
 </head>
 <body>
-  <h1>{{title}} <small>-by-{{author.name}}</small></h1>
-  <p>{{description}}</p>
+  <h1>youtube api results:</h1>
+  <ul>
+    {{#each items}}
+
+      <li>
+        <strong>{{snippet.title}}</strong>
+        <img src="{{snippet.thumbnails.default.url}}">
+      </li>
+    {{/each}}
+  </ul>
+
 </body>
 </html>

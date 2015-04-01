@@ -23,42 +23,39 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
 //api config and stuff
-var getUrl      = '';
-var queryObj    = {};
 
+/* youtube v2
+var getUrl      = 'https://gdata.youtube.com/feeds/api/videos?q=spock&max-results=5&alt=json';
+*/
+
+// youtube v3
+var getUrl      = 'https://www.googleapis.com/youtube/v3/search/';
+var queryObj    = {part:'snippet',
+                  q:'spock',
+                  maxResults:5,
+                  key:''};//needs key or forbidden
+//*/
 
 //routes
 app.get('/', function(req,res){
   superagent.get(getUrl)
-/*    .query(queryObj)
-*/    .set({Accept: 'application/json'})
+    .query(queryObj)
+    .set({Accept: 'application/json'})
     .end(function(e, apiResponse){
       //touch of error cheese
       if(e) console.log(e);
 
       //send response to template
-      return res.render('index', apiResponse.body.content);
+      //v2 returns goods in format handlebars hates
+      //console.log(apiResponse.body.feed.entry[0].media$group.media$thumbnail);
+      //return res.render('index', apiResponse.body);
+
+      //v3 returns goods in reasonable format
+      //console.log(apiResponse.body);
+      return res.render('index', apiResponse.body);
     });
 });
 
 //server listen
 app.listen(8080);
 console.log('listening..');
-
-/*
-//routes defined
-homeRoute = function(req,res){
-  superagent.get('http://api.storify.com/v1/stories' +
-  user + '/' + storySlug)
-    .query({api_key: apiKey,
-      username: userName,
-      token: apiToken})
-    .set({Accept: 'application/json'})
-    .end(function(e, apiResponse){
-      if(e) {
-        return next(e);
-      }
-      return res.render('index', apiResponse.body.content);
-    });
-};
-*/
