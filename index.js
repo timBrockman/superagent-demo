@@ -15,8 +15,8 @@ var   express       = require('express'),
 var   app = express();
 
 //configure template engine
-app.engine('html', consolidate.handlebars);
-app.set('view engine', 'html');
+app.engine('hbs', consolidate.handlebars);
+app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 
 //static folder
