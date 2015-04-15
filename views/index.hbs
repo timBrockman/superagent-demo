@@ -2,19 +2,33 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>total results: {{pageInfo.totalResults}}</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-  <h1>youtube api results:</h1>
-  <ul>
-    {{#each items}}
+  <header>
+    <div class="col-sm-12">
+      <h1>youtube api results:</h1>
+    </div>
+  </header>
+  <section>
+      {{#each items}}
+        <li>
+          <strong>{{snippet.title}}</strong>
+          <img src="{{snippet.thumbnails.default.url}}">
+        </li>
+      {{/each}}
+    </ul>
+  </section>
 
-      <li>
-        <strong>{{snippet.title}}</strong>
-        <img src="{{snippet.thumbnails.default.url}}">
-      </li>
-    {{/each}}
-  </ul>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
