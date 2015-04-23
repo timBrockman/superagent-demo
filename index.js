@@ -10,9 +10,11 @@ handlebars templates.
 //require handles
 var   express       = require('express'),
       superagent    = require('superagent'),
-      consolidate   = require('consolidate');
+      consolidate   = require('consolidate'),
+      config        = require('./config.js');
 
 var   app = express();
+
 
 //configure template engine
 app.engine('hbs', consolidate.handlebars);
@@ -33,7 +35,7 @@ var getUrl      = 'https://www.googleapis.com/youtube/v3/search/';
 var queryObj    = {part:'snippet',
                   q:'spock',
                   maxResults:5,
-                  key:''};//needs key or forbidden
+                  key:config.api.key};//needs key or forbidden
 //*/
 
 //routes

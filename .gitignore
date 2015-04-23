@@ -33,3 +33,4 @@ node_modules
 
 # api keys and such
 config.json
+config.js
