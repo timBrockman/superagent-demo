@@ -11,6 +11,8 @@ handlebars templates.
 var   express       = require('express'),
       superagent    = require('superagent'),
       consolidate   = require('consolidate'),
+      hbs           = require('handlebars'),
+      fs            = require('fs'),
       config        = require('./config.js');
 
 var   app = express();
@@ -20,6 +22,25 @@ var   app = express();
 app.engine('hbs', consolidate.handlebars);
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
+
+
+// register partial(s)
+var partialsDir = __dirname + '/views/partials';
+var partialFiles = fs.readdirSync(partialsDir);
+
+function helpRegisterPartial(partialFile){
+  var partName = /^([a-zA-Z0-9-_]+)\.hbs$/.exec(partialFile);
+  if(!partName){
+    console.log('partial not registered!');
+    return false;
+  }
+  var partial = fs.readFileSync(partialsDir + '/' + partialFile, {encoding:'utf-8'});
+  hbs.registerPartial(partName[1], partial)
+}
+
+partialFiles.forEach(helpRegisterPartial);
+//hbs.registerPartial('test', fs.readFileSync(__dirname + '/views/partials/temp.hbs',{encoding:'utf-8'}));
+
 
 //static folder
 app.use(express.static(__dirname + '/public'));
@@ -54,6 +75,7 @@ app.get('/', function(req,res){
 
       //v3 returns goods in reasonable format
       //console.log(apiResponse.body);
+
       return res.render('index', apiResponse.body);
     });
 });
