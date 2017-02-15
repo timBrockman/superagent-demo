@@ -4,7 +4,7 @@
   "description": "Simple express + superagent + handlebars project.",
   "main": "index.js",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
     "test": "test"
   },
   "keywords": [
@@ -19,7 +19,7 @@
   "dependencies": {
     "consolidate": "^0.12.1",
     "express": "^4.12.3",
-    "handlebars": "^3.0.1",
+    "handlebars": "^4.0.5",
     "superagent": "^1.1.0"
   }
 }
