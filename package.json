@@ -20,6 +20,6 @@
     "consolidate": "^0.12.1",
     "express": "^4.12.3",
     "handlebars": "^4.0.5",
-    "superagent": "^1.1.0"
+    "superagent": "^2.0.0"
   }
 }
